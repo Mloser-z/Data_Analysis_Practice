@@ -71,20 +71,21 @@ if __name__ == "__main__":
 
     with open(file_name, "w", encoding="utf-8") as fp:
         n = 0
-        for li in lis:
-            sp = BeautifulSoup(str(li), "lxml")
-            infor = {"title": get_video_title(sp), "up_name": get_user_name(sp), "video_type": get_video_type(sp), "device": get_device_type(sp), "time": get_time(sp)}
-            # 只爬取两天前的数据
-            if re.match(re.compile(r'\d\d:\d\d'), infor.get("time")) is not None:
-                continue
-            if infor in infor_ed_lists:
-                break
-            else:
-                infor_lists.append(infor)
-                n += 1
+        try:
+            for li in lis:
+                sp = BeautifulSoup(str(li), "lxml")
+                infor = {"title": get_video_title(sp), "up_name": get_user_name(sp), "video_type": get_video_type(sp), "device": get_device_type(sp), "time": get_time(sp)}
+                # 只爬取两天前的数据
+                if re.match(re.compile(r'\d\d:\d\d'), infor.get("time")) is not None:
+                    continue
+                if infor in infor_ed_lists:
+                    break
+                else:
+                    infor_lists.append(infor)
+                    n += 1
+        except Exception:
+            print("解析失败")
         infor_lists.extend(infor_ed_lists)
         json.dump(infor_lists, fp, ensure_ascii=False)
         print("新增数据: ", n)
-
-    for infor in infor_lists:
-        print(infor)
+        print("数据总数：", len(infor_lists))

@@ -5,7 +5,7 @@ import time
 
 # 登录
 def login():
-    web = webdriver.Chrome(executable_path="D:/chromedriver/chromedriver_version_96/chromedriver.exe")
+    web = webdriver.Chrome(executable_path="D:/chromedriver/chromedriver_version_98/chromedriver.exe")
     web.get(url="https://passport.bilibili.com/login")
     input("登录成功后再输入任意字符继续")
     return web
