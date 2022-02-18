@@ -46,13 +46,6 @@ def get_device_type(sp):
     return device_type
 
 
-def is_repeat(infor_dic, infor_ed_dic):
-    if infor_dic.get("title") == infor_ed_dic.get("title") and infor_dic.get("up_name") == infor_ed_dic.get("up_name"):
-        return True
-    else:
-        return False
-
-
 if __name__ == "__main__":
     login.start()
     file_name = "history.html"
@@ -61,6 +54,7 @@ if __name__ == "__main__":
     infor_lists = []
     infor_ed_lists = []
     file_name = "history.json"
+    new_data_file = "new_data.json"
     
     # 读取文件，导出已储存信息，用来判断是否重复
     try:
