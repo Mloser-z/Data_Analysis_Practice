@@ -63,7 +63,7 @@ if __name__ == "__main__":
     except Exception:
         print("No File")
 
-    with open(file_name, "w", encoding="utf-8") as fp:
+    with open(file_name, "w", encoding="utf-8") as fp_1, open(new_data_file, "w", encoding="utf-8") as fp_2:
         n = 0
         try:
             for li in lis:
@@ -79,7 +79,8 @@ if __name__ == "__main__":
                     n += 1
         except Exception:
             print("解析失败")
+        json.dump(infor_lists, fp_2, ensure_ascii=False)
         infor_lists.extend(infor_ed_lists)
-        json.dump(infor_lists, fp, ensure_ascii=False)
+        json.dump(infor_lists, fp_1, ensure_ascii=False)
         print("新增数据: ", n)
         print("数据总数：", len(infor_lists))
