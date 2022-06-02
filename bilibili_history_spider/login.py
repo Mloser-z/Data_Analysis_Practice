@@ -5,7 +5,7 @@ import time
 
 # 登录
 def login():
-    web = webdriver.Chrome(executable_path="D:/chromedriver/chromedriver_version_98/chromedriver.exe")
+    web = webdriver.Chrome(executable_path="D:/chromedriver/chromedriver_version_102/chromedriver.exe")
     web.get(url="https://passport.bilibili.com/login")
     input("登录成功后再输入任意字符继续")
     return web
@@ -13,7 +13,7 @@ def login():
 
 # 点击历史记录界面
 def get_history_page(web):
-    history_button = web.find_element(By.CLASS_NAME, "mini-history")
+    history_button = web.find_element(By.XPATH, "//*[@class='right-entry']/li[6]")
     history_button.click()
     time.sleep(3)
     # 切换至新窗口
